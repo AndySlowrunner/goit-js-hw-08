@@ -13,23 +13,14 @@ const onUpdate = function (data) {
 
 player.on('timeupdate', throttle(onUpdate, 1000));
 
-const playUpdateVideo = function() {
+const playUpdateVideo = function () {
   const savedTime = JSON.parse(localStorage.getItem(currentTimeKey));
   if (savedTime === null) {
     return;
   }
   const playTimeValue = savedTime.seconds;
   if (playTimeValue) {
-    player.setCurrentTime(playTimeValue)
-      .then(function (seconds) {})
-      .catch(function (error) {
-        switch (error.name) {
-          case 'Error':
-            break;
-          default:
-            break;
-        }
-      });
+    player.setCurrentTime(playTimeValue || null);
   }
 };
 playUpdateVideo();

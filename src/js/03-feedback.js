@@ -13,6 +13,11 @@ form.addEventListener('input', throttle(onFormInput, 500));
 function onFormSubmit(evt) {
     evt.preventDefault();
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+    
+    if (input.value === '' || textarea.value === '') {
+        return alert('Please fill in all fields!');
+    };
+    
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 };
